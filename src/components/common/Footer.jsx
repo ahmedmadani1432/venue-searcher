@@ -75,14 +75,14 @@ const Footer = () => {
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-pink-500" />
                 <a href="tel:+1234567890" className="text-gray-600 hover:text-pink-600 transition-colors">
-                  (123) 456-7890
+                  8798321721
                 </a>
               </li>
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-1 text-pink-500" />
                 <span className="text-gray-600">
-                  123 Wedding Street<br />
-                  Celebration City, WD 10001
+                CGC ,<br />
+                   TDC ,MoghalPura
                 </span>
               </li>
             </ul>
