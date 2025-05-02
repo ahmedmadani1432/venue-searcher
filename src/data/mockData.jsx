@@ -124,11 +124,11 @@ export const venues = [
     address: '24-7-345, Road No. 10, Jubilee Hills, Hyderabad',
     description: 'Golden Tulip Banquets offers luxurious wedding venues with opulent décor and state-of-the-art facilities. Our three distinct halls can accommodate weddings of various sizes, each with unique architectural elements to make your celebration truly special.',
     images: [
-      'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://www.venue.events/public/upload/venuegallery/3779/1_the_durbar_hall-1.jpg',
       'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     ],
-    image: 'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    image: 'https://www.venue.events/public/upload/venuegallery/3779/1_the_durbar_hall-1.jpg',
     capacity: 600,
     pricePerHour: 30000,
     hasParking: true,
@@ -202,11 +202,11 @@ export const venues = [
     address: '45-6-789, Durgam Cheruvu Road, Madhapur, Hyderabad',
     description: 'Lotus Grand Celebrations is a picturesque wedding venue featuring beautiful water features and garden areas. Our venue specializes in intimate weddings with attention to detail and personalized service. Couples appreciate our flexibility in customizing every aspect of their wedding day.',
     images: [
-      'https://images.pexels.com/photos/3721506/pexels-photo-3721506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://content.jdmagicbox.com/v2/comp/hyderabad/q3/040pxx40.xx40.140326092521.h1q3/catalogue/noori-palace-function-hall-chandrayan-gutta-hyderabad-banquet-halls-5l702h7p8g.jpg',
       'https://images.pexels.com/photos/1395968/pexels-photo-1395968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       'https://images.pexels.com/photos/3585747/pexels-photo-3585747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     ],
-    image: 'https://images.pexels.com/photos/3721506/pexels-photo-3721506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      image:'https://content.jdmagicbox.com/v2/comp/hyderabad/q3/040pxx40.xx40.140326092521.h1q3/catalogue/noori-palace-function-hall-chandrayan-gutta-hyderabad-banquet-halls-5l702h7p8g.jpg',
     capacity: 250,
     pricePerHour: 15000,
     hasParking: true,
@@ -233,7 +233,84 @@ export const venues = [
       '2025-02-13',
       '2025-02-20',
     ]
-  }
+  },{
+    id: '7',
+    name: 'Taj Crown',
+    area: 'Mahdipatnam',
+    address: '10-11-123, Road No. 3, Mahdipatnam, Hyderabad',
+    description: 'Emerald Heights is a premium wedding venue located on a hilltop offering spectacular city views. The venue features a modern design with elegant interiors, creating a sophisticated atmosphere for your wedding celebrations. Our experienced team ensures every detail is perfectly executed.',
+    images: [
+      'https://content.jdmagicbox.com/v2/comp/hyderabad/i9/040pxx40.xx40.180410221749.q9i9/catalogue/royal-palace-function-hall-idpl-hyderabad-banquet-halls-lLdv50RqqJ.jpg?fit=around%7C350:350&crop=350:350;*,*',
+      'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://images.pexels.com/photos/3585799/pexels-photo-3585799.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    ],
+    image: 'https://content.jdmagicbox.com/v2/comp/hyderabad/i9/040pxx40.xx40.180410221749.q9i9/catalogue/royal-palace-function-hall-idpl-hyderabad-banquet-halls-lLdv50RqqJ.jpg?fit=around%7C350:350&crop=350:350;*,*',
+    capacity: 400,
+    pricePerHour: 22000,
+    hasParking: true,
+    hasCatering: true,
+    hasDecoration: false,
+    hasAccommodation: false,
+    rating: 4.5,
+    reviews: 92,
+    amenities: [
+      'City view',
+      'Multiple halls',
+      'Customizable spaces',
+      'Valet parking',
+      'Power backup',
+      'Professional lighting',
+      'WiFi',
+      'Rooftop area'
+    ],
+    availableDates: [
+      '2025-01-12',
+      '2025-01-19',
+      '2025-01-26',
+      '2025-02-02',
+      '2025-02-09',
+      '2025-02-16',
+    ]
+  },
+  {
+    id: '4',
+    name: 'Golden Ring Banquets',
+    area: 'Tolichowki',
+    address: '24-7-345, Road No. 10, ToliCowki, Hyderabad',
+    description: 'Golden Tulip Banquets offers luxurious wedding venues with opulent décor and state-of-the-art facilities. Our three distinct halls can accommodate weddings of various sizes, each with unique architectural elements to make your celebration truly special.',
+    images: [
+      'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    ],
+    image: 'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    capacity: 600,
+    pricePerHour: 30000,
+    hasParking: true,
+    hasCatering: true,
+    hasDecoration: true,
+    hasAccommodation: false,
+    rating: 4.9,
+    reviews: 158,
+    amenities: [
+      'Multiple venues',
+      'Grand entrance',
+      'Premium décor',
+      'Bridal room',
+      'Valet parking',
+      'Sound system',
+      'Customizable lighting',
+      'In-house decorators'
+    ],
+    availableDates: [
+      '2025-01-10',
+      '2025-01-17',
+      '2025-01-24',
+      '2025-02-01',
+      '2025-02-08',
+      '2025-02-15',
+    ]
+  },
 ];
 
 export const getVenuesByArea = (area) => {

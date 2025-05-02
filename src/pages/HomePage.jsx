@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Heart, Calendar, Clock, MapPin, Users, CreditCard } from 'lucide-react';
 import Button from '../components/common/Button';
 import SearchBar from '../components/common/SearchBar';
+import axios from 'axios';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
+
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+const [showDropdown, setShowDropdown] = useState(false);
+
+
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios.post("http://localhost:5001/api/v1/hall/searchhall")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
+
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -17,9 +35,13 @@ const HomePage = () => {
 
   const popularAreas = [
     { name: 'Banjara Hills', image: 'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
-    { name: 'Jubilee Hills', image: 'https://images.pexels.com/photos/2291599/pexels-photo-2291599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
+    { name: 'Jubilee Hills', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpXBPxDHMdsvIdvdGNx4p8VFxikfFetHZwwA&s' },
     { name: 'Hitech City', image: 'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
-    { name: 'Madhapur', image: 'https://images.pexels.com/photos/3721506/pexels-photo-3721506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
+    { name: 'Madhapur', image: 'https://content.jdmagicbox.com/v2/comp/hyderabad/q3/040pxx40.xx40.140326092521.h1q3/catalogue/noori-palace-function-hall-chandrayan-gutta-hyderabad-banquet-halls-5l702h7p8g.jpg' },
+    { name: 'Mahdipatnam', image: 'https://content.jdmagicbox.com/v2/comp/hyderabad/i9/040pxx40.xx40.180410221749.q9i9/catalogue/royal-palace-function-hall-idpl-hyderabad-banquet-halls-lLdv50RqqJ.jpg?fit=around%7C350:350&crop=350:350;*,*' },
+    { name: 'Tolichowki', image: 'https://onehorizonproductions.com/wp-content/uploads/2022/09/Maharaja-2.jpg' },
+    { name: 'MasabTank', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJpTzTz2oIE-ULZ88kc95ydUqsqDjNckhgfjLztpmq_ninLjL9QY5rOUTwpsXrJhWRKFw&usqp=CAU' },
+    { name: 'Charminar', image: 'https://media.weddingz.in/photologue/images/kings-palace-kings-palace-3.jpg' }
   ];
 
   return (
@@ -29,9 +51,9 @@ const HomePage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: 'url(https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+            backgroundImage: 'url(https://onehorizonproductions.com/wp-content/uploads/2022/10/Whitepetals-3-849.jpg)',
             // backgroundImage: 'url(./assets/1.jpg)',
-            opacity: 0.3
+            opacity: 0.6
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-pink-600/30 to-lavender-600/20"></div>
@@ -47,10 +69,50 @@ const HomePage = () => {
               <input
                 type="text"
                 placeholder="Search venues by area (e.g., Banjara Hills)"
+                className="w-full rounded-full px-6 py-4 pr-36 shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-100 text-pink-800 bg-white"
+                value={searchQuery}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setSearchQuery(value);
+                  if (value.trim() === '') {
+                    setFilteredSuggestions([]);
+                    setShowDropdown(false);
+                  } else {
+                    const matches = popularAreas.filter((area) =>
+                      area.name.toLowerCase().includes(value.toLowerCase())
+                    );
+                    setFilteredSuggestions(matches);
+                    setShowDropdown(true);
+                  }
+                }}
+              />
+
+{showDropdown && filteredSuggestions.length > 0 && (
+  <ul className="absolute left-0 right-0 mt-1 bg-red border border-gray-300 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto">
+    {filteredSuggestions.map((area, index) => (
+      <li
+        key={index}
+        onClick={() => {
+          setSearchQuery(area.name);
+          setShowDropdown(false);
+          navigate(`/venues/${area.name}`);
+        }}
+        className="px-1 py-2 hover:bg-pink-50 cursor-pointer text-black hover:text-pink-700 flex"
+      > 
+        {area.name}
+      </li>
+    ))}
+  </ul>
+)}
+
+
+              {/* <input
+                type="text"
+                placeholder="Search venues by area (e.g., Banjara Hills)"
                 className="w-full rounded-full px-6 py-4 pr-36 shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-300"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-              />
+              /> */}
               <button 
                 type="submit"
                 className="absolute right-2 top-2 bg-pink-100 hover:bg-pink-200 text-pink-700 px-6 py-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-pink-300"
@@ -60,14 +122,14 @@ const HomePage = () => {
               </button>
             </form>
           </div>
-          <div className="mt-6 text-gray-600 slide-up">
-            <p>Popular areas:</p>
+          <div className="mt-6 text-gray-600 slide-up" id='popular'>
+            <p className='bg-white hover:bg-gray-50 text-gray-900 text-sm px-3 py-1 rounded-full shadow-sm transition-colors w-40 m-auto'  >Popular areas:</p>
             <div className="flex flex-wrap justify-center gap-2 mt-2">
               {popularAreas.map((area, index) => (
                 <button
                   key={index}
                   onClick={() => navigate(`/venues/${area.name}`)}
-                  className="bg-white hover:bg-gray-50 text-gray-700 text-sm px-3 py-1 rounded-full shadow-sm transition-colors"
+                  className="text-white text-sm px-3 py-1 rounded-full shadow-md transition-colors hover:bg-white hover:text-pink-700"
                 >
                   {area.name}
                 </button>

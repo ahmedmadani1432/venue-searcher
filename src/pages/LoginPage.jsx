@@ -3,15 +3,18 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
 import Button from '../components/common/Button';
 import AuthContext from '../context/AuthContext';
+import {Formik, Form,Field,ErrorMessage} from "formik";
+import axios from 'axios';
+import *as Yup from "yup";
 
 const LoginPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
   const location = useLocation();
   const state = location.state;
   const from = state?.from?.pathname || '/';
@@ -32,6 +35,7 @@ const LoginPage = () => {
       // Navigate to the page the user was trying to access, or home
       navigate(from, { replace: true });
     } catch (err) {
+      console.log(err);
       setError('Invalid email or password');
     } finally {
       setIsLoading(false);
@@ -39,6 +43,22 @@ const LoginPage = () => {
   };
 
   return (
+    <Formik
+      initialValues={{
+        email:"",
+        password:"",
+      }}
+      validationSchema={
+        Yup.object({
+          email:Yup.string().email("Invalid email").required("Email is Mandatory"),
+          password:Yup.string().min(8,"Minimum 8 Char reqired").max(10,"Maximum 10 Char required").required("Password is Reqiured"),
+        })
+      }
+    >
+      {({values, setFieldValue})=>{
+
+      }}
+
     <div className="page-container flex items-center justify-center py-12">
       <div className="bg-white rounded-lg shadow-sm w-full max-w-md p-8">
         <div className="text-center mb-8">
@@ -90,7 +110,7 @@ const LoginPage = () => {
             className="w-full"
             type="submit"
             isLoading={isLoading}
-          >
+            >
             Log In
           </Button>
 
@@ -105,6 +125,7 @@ const LoginPage = () => {
         </form>
       </div>
     </div>
+            </Formik>
   );
 };
 
